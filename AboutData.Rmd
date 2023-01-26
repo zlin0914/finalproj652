@@ -52,13 +52,17 @@ Here are the packages I used for this data visualization:
 ```{r dataprep, echo= TRUE, eval=TRUE}
 library(haven)
 library(tidyverse)
-library(modelsummary)
 ```
 
 Read the data and clean it ready to use:
 ```{r importdata, echo=TRUE, eval=TRUE}
 df<-read.csv("data/ICAO_accidents.csv") 
-df %<% select(Date)
+
+
+ggplot(df, aes(fill = Over2250, x = Year)) + geom_bar(stat = "count")
+ggplot(df, aes(fill = Over5700, x = Year)) + geom_bar(stat = "count")
+
+
 
 ```
 
