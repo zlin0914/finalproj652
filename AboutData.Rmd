@@ -1,0 +1,71 @@
+---
+title: "About the data"
+description: |
+#author:
+#  - name: Nora Jones 
+#    url: https://example.com/norajones
+#   affiliation: Spacely Sprockets
+#   affiliation_url: https://example.com/spacelysprokets
+#   date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Variables 
+  - The data is extracted from from ICAO (International Civil Aviation Organization) API, occurred in the last 15 years (from Jan 2008 to May 2022).
+  - Original ICAO API datasets link is available below. API key required, with 100 free calls available using a company email for subscription. Every accidents year dataset requires one different call (available in CSV or JSON format).
+  https://applications.icao.int/dataservices/default.aspx
+  
+Columns:
+
+- Date: Date of occurrence in datetime format (time is default 00:00:00.000Z)
+- StateOfOccurrence: Country of occurrence
+- Location: City or nearest city of occurrence
+- Model: Aircraft type
+- Registration: Aircraft registration code
+- Operator: Name of Operator (airline, institution or responsible for the aircraft operation)
+- StateOfOperator: Operator's country
+- StateOfRegistry: Country of aircraft registration
+- FlightPhase: Flight Phase of occurrence (take off, landing, approach, etc.)
+- Class: Accident (unique value). rmk: only 'Accident' class was selected in this dataset (no incidens)
+- Fatalities: Number of fatal victims
+- Over2250: If aircraft basic operational weight (empty) is greater than 2250KG
+- Over5700: If aircraft basic operational weight (empty) is greater than 5700KG
+- ScheduledCommercial: If it was a scheduled commercial flight (airlines mostly)
+- InjuryLevel: Level of injuries on person/people involved in the occurrence
+- TypeDesignator: Aircraft type code (https://cfapps.icao.int/doc8643/reports/Part2-By%20Type%20Designator(Decode).pdf)
+- Helicopter: if it was a helicopter
+- Airplane: If it was an airplane
+- Engine: Number of engines in the aircraft
+- EngineType: Aircraft engine type (jet, turboprop or piston)
+- Official: If ICAO was designated to participate in the accident investigation
+- OccCats: All risk types involved in the occurrence, coded according to HRCs ( High Risks Categories codes) - ICAO
+- Risk: Main risk type involved in the occurrence, coded according to HRCs(( High Risks Categories codes) - ICAO
+- Year: Year of occurrence
+
+## Data Preparation
+Here are the packages I used for this data visualization:
+
+```{r dataprep, echo= TRUE, eval=TRUE}
+library(haven)
+library(tidyverse)
+library(modelsummary)
+```
+
+Read the data and clean it ready to use:
+```{r importdata, echo=TRUE, eval=TRUE}
+df<-read.csv("data/ICAO_accidents.csv") 
+df %<% select(Date)
+
+```
+
+
+
+
+
+
+
+

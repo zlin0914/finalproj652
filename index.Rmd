@@ -10,7 +10,14 @@ output:
   postcards::trestles
 site: distill::distill_website
 ---
- 
+
+## About the data 
+- The data is extracted from from ICAO (International Civil Aviation Organization) API, occurred in the last 15 years (from Jan 2008 to May 2022).
+
+- Original ICAO API datasets link is available below. API key required, with 100 free calls available using a company email for subscription. Every accidents year dataset requires one different call (available in CSV or JSON format).
+https://applications.icao.int/dataservices/default.aspx
+
+
 The proposal process is a chance for you to get feedback from me on your plans for the final project. The more information you provide me, the better feedback I can provide you. The proposal is scored on a best honest effort basis. For full credit, please include each of the following:
 
 - Description of the data and source (must be publicly available)
