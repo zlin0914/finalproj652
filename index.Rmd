@@ -1,41 +1,23 @@
 ---
-title: "Data Visualization from Zhen"
-image: "frank.jpg"
+title: "Data Visualization for airplane accident 2008-2022"
+image: "images/crashed.jpg"
 links:
-  - label: LinkedIn
-    url: "https://linkedin.com/"
-  - label: Twitter
-    url: "https://twitter.com/"
-  - label: GitHub
-    url: "https://github.com/"
-  - label: Email
-    url: "mailto:email@email.com"
+  - label: '<i class="fas fa-envelope"></i> Email'
+    url: "mailto:zhenl@uoregon.edu"
+  - label: '<i class="fab fa-linkedin"></i> Linkedin'
+    url: 'https://www.linkedin.com/in/zhen-lin-76219a146/ target="_blank"'
 output:
   postcards::trestles
 site: distill::distill_website
 ---
  
-## Bio
+The proposal process is a chance for you to get feedback from me on your plans for the final project. The more information you provide me, the better feedback I can provide you. The proposal is scored on a best honest effort basis. For full credit, please include each of the following:
 
-Frank Hermosillo studies neural networks and their applications at Google 
-Brain. His research focuses on differentiable network pruning approximation and 
-decentralized gradient inversion mechanics. He frequently collaborates with 
-researchers who study machine learning, computer vision, and cognitive science.
-His work has been featured in WIRED, The Atlantic, Newsweek, and The New York 
-Times Magazine.
-
-## Education
-
-**Massachusetts Institute of Technology** | Cambridge, MA
-
-Ph.D. in Computer Science | September 2009 - May 2014
-
-**The University of California, Berkeley** | Berkeley, CA
-
-B.S. in Computer Science | September 2005 - May 2009
-
-## Experience
-
-**Google Brain** | Principal Investigator | January 2018 - Present
-
-**Netflix** | Research Scientist | June 2014 - December 2017
+- Description of the data and source (must be publicly available)
+- Research questions (probably 1-3)
+- Some documentation that you have played with the course data (EDA)
+- Preliminary ideas (even hand sketches) of different visualizations
+- Identification of the intended audience for each visualization
+- Note you might consider displaying the same data/relations more than once, with each plot displayed for a different audience.
+- The intended message is to be communicated for each plot.
+The proposal can be up to 3 pages (single-spaced), including everything.
