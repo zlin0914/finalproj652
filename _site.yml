@@ -5,8 +5,10 @@ description: |
 output_dir: "docs"
 navbar:
   right:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
+    - text: "graphics"
+      menu: 
+        - text: "location"
+          href: location.html
+        - text: "year"
+          href: year.html
 output: distill::distill_article
