@@ -62,6 +62,8 @@ df<-read.csv("data/ICAO_accidents.csv")
 ggplot(df, aes(fill = Over2250, x = Year)) + geom_bar(stat = "count")
 ggplot(df, aes(fill = Over5700, x = Year)) + geom_bar(stat = "count")
 
+ggplot(df, aes(fill = FlightPhase, x = Year)) + geom_bar(stat = "count")
+ggplot(df, aes (x = StateOfOccurrence)) + geom_bar(stat = "count")
 
 
 ```
