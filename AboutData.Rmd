@@ -14,13 +14,9 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Variables 
-  - The data is extracted from from ICAO (International Civil Aviation Organization) API, occurred in the last 15 years (from Jan 2008 to May 2022).
-  - Original ICAO API datasets link is available below. API key required, with 100 free calls available using a company email for subscription. Every accidents year dataset requires one different call (available in CSV or JSON format).
-  https://applications.icao.int/dataservices/default.aspx
-  
-Columns:
 
+## Variables 
+Columns:
 - Date: Date of occurrence in datetime format (time is default 00:00:00.000Z)
 - StateOfOccurrence: Country of occurrence
 - Location: City or nearest city of occurrence
@@ -50,20 +46,76 @@ Columns:
 Here are the packages I used for this data visualization:
 
 ```{r dataprep, echo= TRUE, eval=TRUE}
-library(haven)
+library(dplyr)
 library(tidyverse)
 ```
 
 Read the data and clean it ready to use:
 ```{r importdata, echo=TRUE, eval=TRUE}
 df<-read.csv("data/ICAO_accidents.csv") 
+```
+
+We are only looking at the accidents of comercial flights:
+```{r echo=TRUE, eval=TRUE}
+df <- filter(df, df$ScheduledCommercial == "True")
+```
 
 
-ggplot(df, aes(fill = Over2250, x = Year)) + geom_bar(stat = "count")
-ggplot(df, aes(fill = Over5700, x = Year)) + geom_bar(stat = "count")
+```{r echo=TRUE, eval=TRUE}
+df_full<- df %>% group_by(Year) %>% mutate(num_fatal = sum(Fatalities, na.rm = T))
+```
 
-ggplot(df, aes(fill = FlightPhase, x = Year)) + geom_bar(stat = "count")
-ggplot(df, aes (x = StateOfOccurrence)) + geom_bar(stat = "count")
+
+# Number case year each Phase
+phase_year<- data.frame(table(df$Year, df$FlightPhase))
+
+#
+num_fatal_year<- data.frame(table(df$Year, df$Fatalities))
+ggplot(df, aes( x= year, y = num_fatal)) 
+
+west <- c("CA", "OR", "WA")
+west_coast <- ggplot(df) +
+              geom_line(aes(year, num_fatal, colour = FlightPhase)) + 
+#              gghighlight(state %in% west) +
+              labs(x = "Year", y = "Total Production of Honey") 
+west_coast
+
+#Number case year each Injured Level
+phase_inj<- data.frame(table(df$Year, df$InjuryLevel))
+
+
+df_a<- df %>% group_by(Year) %>% mutate(num_fatal = sum(Fatalities, na.rm = T))
+
+ggplot(year, aes( x= year, y = num_fatal)) + geom_point()
+
+year_crashes <- data.frame(table(as.factor(format(df$Year)))) %>%  
+                  rename(Year = Var1, Number_of_Acci  = Freq ) 
+df_y <- data.frame(year_crashes)
+
+df <- left_join(year_crashes, df)
+#Number of Accident
+ggplot(year_crashes, aes( x = year, y = Number_of_Acci, group = 1)) + 
+  geom_line() + geom_point() + geom_smooth() 
+
+#Number of Accident and Fatalities
+ggplot(df, aes(x = Year, y = Fatalities)) + 
+  geom_col(fill = FlightPhase) 
+
+#Number of Crash Per month
+
+
+#Injury Level Fatalities facet~Flight Phase
+ggplot(df, aes(x = InjuryLevel, y = Fatalities)) +  geom_col(aes (fill = EngineType)) + facet_wrap(~FlightPhase)
+
+#Year and Fatalities
+ggplot(df,aes(Year, Fatalities)) + geom_point(aes(color = FlightPhase)) + geom_smooth()
+
+
+
+#Most fatal in the what kind of phase?
+
+df %>% drop_na(FlightPhase) %>% data.frame(table(as.numeric(format(FlightPhase)))) %>%  
+                  rename(year = Var1, Number_of_Acci  = Freq ) 
 
 
 ```
