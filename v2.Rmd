@@ -1,0 +1,56 @@
+---
+title: "Histogram"
+description: |
+  2008 - 2022 Phase and accidents number
+author:
+  - name: Nora Jones 
+    url: https://example.com/norajones
+    affiliation: Spacely Sprockets
+    affiliation_url: https://example.com/spacelysprokets
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r importdata}
+library(tidyverse)
+library(ggthemes)
+library(plotly)
+
+df<-read.csv("data/ICAO_accidents.csv") 
+
+#Country abbreviation to country full name
+world <- read.csv("data/world.csv") %>% 
+    rename(StateOfOccurrence = Abbreviation)
+
+df <- left_join(df, world)
+com <- filter(df, df$ScheduledCommercial == "True") %>% select(Year, Country, Model, Fatalities, Over2250, Over5700, InjuryLevel, Risk, FlightPhase, EngineType)
+
+
+```
+
+Year Flight Phase and number of fatilities
+
+```{r eval = T, echo = T}
+FP <- com %>% group_by(Year, FlightPhase, na.rm = T) %>% summarize(num_fatal = sum(Fatalities, na.rm = T))
+
+
+```
+
+
+```{r eval = T, echo = T}
+ ggplot(FP, aes(x = FlightPhase, y = num_fatal)) +  geom_col(aes (fill = FlightPhase)) + facet_wrap(~Year)
+plot_ly(FP, x = ~Year, y =~num_fatal, color =~FlightPhase)
+```
+
+
+
+This plot represents the number of fatalities (from 2008 - 2022) each year from across different flight phase (i.e., from Approach to Landing). The x axis represents the year from 2008 to 2022, and the y axis represents the number of fatal number. The groups of flight phase are represented by the colors on the scatter plot. (I am going to make a change for the graph) In the interactive graph, readers can click on the point to see the actual number for each year. They can also click on the legend to filter the flight phase based on their interets. From this plot, we can easily distinguish that in 2014, flights cause more accidents during the flight. The flight phase causes the most fatal is En-Route. 
+
+This plot is intended for a general audience. See the plots on the below for different iterations of this visualization.
+
+
+

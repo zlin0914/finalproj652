@@ -2102,15 +2102,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="index.html" class="title">Data Visualization</a>
 </div>
 <div class="nav-right">
+<a href="AboutData.html">About Data</a>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
-graphics
+Data Visualizations
  
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="AboutData.html">About the Data</a>
-<a href="year.html">year</a>
+<a href="v1.html">Graph 1</a>
+<a href="v2.html">Graph 2</a>
+<a href="v3.html">Word Map</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2131,11 +2133,6 @@ graphics
 
 <div class="d-article">
 <h2 id="variables">Variables</h2>
-<ul>
-<li>The data is extracted from from ICAO (International Civil Aviation Organization) API, occurred in the last 15 years (from Jan 2008 to May 2022).</li>
-<li>Original ICAO API datasets link is available below. API key required, with 100 free calls available using a company email for subscription. Every accidents year dataset requires one different call (available in CSV or JSON format).
-<a href="https://applications.icao.int/dataservices/default.aspx" class="uri">https://applications.icao.int/dataservices/default.aspx</a></li>
-</ul>
 <p>Columns:</p>
 <ul>
 <li>Date: Date of occurrence in datetime format (time is default 00:00:00.000Z)</li>
@@ -2167,23 +2164,115 @@ graphics
 <p>Here are the packages I used for this data visualization:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://haven.tidyverse.org'>haven</a></span><span class='op'>)</span></span>
-<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://yihui.org/knitr/'>knitr</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-Read the data and clean it ready to use:
+<p>Read the data:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"data/ICAO_accidents.csv"</span><span class='op'>)</span> </span>
 <span></span>
-<span></span>
-<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>Over2250</span>, x <span class='op'>=</span> <span class='va'>Year</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"count"</span><span class='op'>)</span></span></code></pre>
+<span><span class='co'>#Country abbreviation to country full name</span></span>
+<span><span class='va'>world</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"data/world.csv"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>StateOfOccurrence <span class='op'>=</span> <span class='va'>Abbreviation</span><span class='op'>)</span></span>
+<span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>world</span><span class='op'>)</span></span></code></pre>
 </div>
-<img src="AboutData_files/figure-html5/importdata-1.png" width="624" />
+</div>
+<p>We are only looking at the accidents of <strong>commercial</strong> flights:</p>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>Over5700</span>, x <span class='op'>=</span> <span class='va'>Year</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"count"</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>com</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>ScheduledCommercial</span> <span class='op'>==</span> <span class='st'>"True"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Year</span>, <span class='va'>Country</span>, <span class='va'>Model</span>, <span class='va'>Fatalities</span>, <span class='va'>Over2250</span>, <span class='va'>Over5700</span>, <span class='va'>InjuryLevel</span>, <span class='va'>Risk</span>, <span class='va'>FlightPhase</span>, <span class='va'>EngineType</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>com</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>,<span class='op'>]</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="AboutData_files/figure-html5/importdata-2.png" width="624" /></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 10%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 11%" />
+<col style="width: 4%" />
+<col style="width: 11%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: left;">Country</th>
+<th style="text-align: left;">Model</th>
+<th style="text-align: right;">Fatalities</th>
+<th style="text-align: left;">Over2250</th>
+<th style="text-align: left;">Over5700</th>
+<th style="text-align: left;">InjuryLevel</th>
+<th style="text-align: left;">Risk</th>
+<th style="text-align: left;">FlightPhase</th>
+<th style="text-align: left;">EngineType</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">NAMC YS11 A</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">RS</td>
+<td style="text-align: left;">Landing</td>
+<td style="text-align: left;">Turboprop</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">Iran</td>
+<td style="text-align: left;">FOKKER F27 100</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">OTH</td>
+<td style="text-align: left;">Take-off</td>
+<td style="text-align: left;">Turboprop</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">Venezuela</td>
+<td style="text-align: left;">LET L410 UVP</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">Fatal</td>
+<td style="text-align: left;">SCF</td>
+<td style="text-align: left;">En route</td>
+<td style="text-align: left;">Turboprop</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">AIRBUS A319</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">True</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">SCF</td>
+<td style="text-align: left;">Approach</td>
+<td style="text-align: left;">Jet</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="each-year">Each Year</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>coun</span><span class='op'>&lt;-</span> <span class='va'>com</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>Country</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>num_fatal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>Fatalities</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='co'>#head(df_full)</span></span>
+<span></span>
+<span><span class='va'>country</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>com</span><span class='op'>$</span><span class='va'>Country</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

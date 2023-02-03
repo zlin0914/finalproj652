@@ -17,14 +17,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Variables 
 Columns:
-- Date: Date of occurrence in datetime format (time is default 00:00:00.000Z)
-- StateOfOccurrence: Country of occurrence
+
+- Date: Date of occurrence in datetime format (time is default 00:00:00.000Z) 
+- StateOfOccurrence: Country of occurrence 
 - Location: City or nearest city of occurrence
 - Model: Aircraft type
-- Registration: Aircraft registration code
-- Operator: Name of Operator (airline, institution or responsible for the aircraft operation)
+- Registration: Aircraft registration code 
+- Operator: Name of Operator (airline, institution or responsible for the aircraft operation) 
 - StateOfOperator: Operator's country
-- StateOfRegistry: Country of aircraft registration
+- StateOfRegistry: Country of aircraft registration 
 - FlightPhase: Flight Phase of occurrence (take off, landing, approach, etc.)
 - Class: Accident (unique value). rmk: only 'Accident' class was selected in this dataset (no incidens)
 - Fatalities: Number of fatal victims
@@ -48,80 +49,36 @@ Here are the packages I used for this data visualization:
 ```{r dataprep, echo= TRUE, eval=TRUE}
 library(dplyr)
 library(tidyverse)
+library(knitr)
 ```
 
-Read the data and clean it ready to use:
+Read the data:
+
 ```{r importdata, echo=TRUE, eval=TRUE}
 df<-read.csv("data/ICAO_accidents.csv") 
+
+#Country abbreviation to country full name
+world <- read.csv("data/world.csv") %>% 
+    rename(StateOfOccurrence = Abbreviation)
+df <- left_join(df, world)
 ```
 
-We are only looking at the accidents of comercial flights:
+We are only looking at the accidents of **commercial** flights:
+
 ```{r echo=TRUE, eval=TRUE}
-df <- filter(df, df$ScheduledCommercial == "True")
+com <- filter(df, df$ScheduledCommercial == "True") %>% select(Year, Country, Model, Fatalities, Over2250, Over5700, InjuryLevel, Risk, FlightPhase, EngineType)
+kable(head(com[1:4,]))
 ```
 
-
+Add up the fatality number for each year for each country
 ```{r echo=TRUE, eval=TRUE}
-df_full<- df %>% group_by(Year) %>% mutate(num_fatal = sum(Fatalities, na.rm = T))
+coun<- com %>% group_by(Country, na.rm = T) %>% mutate(num_fatal = sum(Fatalities, na.rm = T))
 ```
 
-
-# Number case year each Phase
-phase_year<- data.frame(table(df$Year, df$FlightPhase))
-
-#
-num_fatal_year<- data.frame(table(df$Year, df$Fatalities))
-ggplot(df, aes( x= year, y = num_fatal)) 
-
-west <- c("CA", "OR", "WA")
-west_coast <- ggplot(df) +
-              geom_line(aes(year, num_fatal, colour = FlightPhase)) + 
-#              gghighlight(state %in% west) +
-              labs(x = "Year", y = "Total Production of Honey") 
-west_coast
-
-#Number case year each Injured Level
-phase_inj<- data.frame(table(df$Year, df$InjuryLevel))
-
-
-df_a<- df %>% group_by(Year) %>% mutate(num_fatal = sum(Fatalities, na.rm = T))
-
-ggplot(year, aes( x= year, y = num_fatal)) + geom_point()
-
-year_crashes <- data.frame(table(as.factor(format(df$Year)))) %>%  
-                  rename(Year = Var1, Number_of_Acci  = Freq ) 
-df_y <- data.frame(year_crashes)
-
-df <- left_join(year_crashes, df)
-#Number of Accident
-ggplot(year_crashes, aes( x = year, y = Number_of_Acci, group = 1)) + 
-  geom_line() + geom_point() + geom_smooth() 
-
-#Number of Accident and Fatalities
-ggplot(df, aes(x = Year, y = Fatalities)) + 
-  geom_col(fill = FlightPhase) 
-
-#Number of Crash Per month
-
-
-#Injury Level Fatalities facet~Flight Phase
-ggplot(df, aes(x = InjuryLevel, y = Fatalities)) +  geom_col(aes (fill = EngineType)) + facet_wrap(~FlightPhase)
-
-#Year and Fatalities
-ggplot(df,aes(Year, Fatalities)) + geom_point(aes(color = FlightPhase)) + geom_smooth()
-
-
-
-#Most fatal in the what kind of phase?
-
-df %>% drop_na(FlightPhase) %>% data.frame(table(as.numeric(format(FlightPhase)))) %>%  
-                  rename(year = Var1, Number_of_Acci  = Freq ) 
-
-
+Add up the fatality number for each year for each country
+```{r echo=TRUE, eval=TRUE}
+FP <- com %>% group_by(FlightPhase, na.rm = T) %>% mutate(num_fatal = sum(Fatalities, na.rm = T))
 ```
-
-
-
 
 
 

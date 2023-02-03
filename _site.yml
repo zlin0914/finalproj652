@@ -5,8 +5,14 @@ description: |
 output_dir: "docs"
 navbar:
   right:
-    - text: "See graphics"
+    - text: "About Data"
+      href: AboutData.html
+    - text: "Data Visualizations"
       menu: 
-        - text: "About the Data"
-          href: AboutData.html
+        - text: "Graph 1"
+          href: v1.html
+        - text: "Graph 2"
+          href: v2.html
+        - text: "Word Map"
+          href: v3.html
 output: distill::distill_article

@@ -25,4 +25,3 @@ The intended audience of this visualization is for general travelers who care ab
 1. Which phases during the flight is the most easy to cause accidents?  
 2. Where is the location is the most frequent to have flight accidents?  
 3. What factors create the most fatal number in the flight accidents?
-
