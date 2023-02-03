@@ -9,9 +9,9 @@ navbar:
       href: AboutData.html
     - text: "Data Visualizations"
       menu: 
-        - text: "Graph 1"
+        - text: "Plotly Histogram"
           href: v1.html
-        - text: "Graph 2"
+        - text: "Facet and Plotly Scatter"
           href: v2.html
         - text: "Word Map"
           href: v3.html

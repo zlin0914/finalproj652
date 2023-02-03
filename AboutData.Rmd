@@ -71,6 +71,7 @@ kable(head(com[1:4,]))
 ```
 
 Add up the fatality number for each year for each country
+
 ```{r echo=TRUE, eval=TRUE}
 coun<- com %>% group_by(Country, na.rm = T) %>% mutate(num_fatal = sum(Fatalities, na.rm = T))
 ```

@@ -88,33 +88,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Data Visualization: Untitled</title>
+  <title>Data Visualization: Year and Fatal Number in different Flight Phase </title>
 
-  <meta property="description" itemprop="description" content="A new article created using the Distill format."/>
+  <meta property="description" itemprop="description" content="The data visualization represent the number of fatalities from 2008 to 2022 in different flight phase."/>
 
 
-  <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2023-01-31"/>
-  <meta property="article:created" itemprop="dateCreated" content="2023-01-31"/>
-  <meta name="article:author" content="Nora Jones"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Data Visualization: Untitled"/>
+  <meta property="og:title" content="Data Visualization: Year and Fatal Number in different Flight Phase "/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A new article created using the Distill format."/>
+  <meta property="og:description" content="The data visualization represent the number of fatalities from 2008 to 2022 in different flight phase."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Data Visualization"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Data Visualization: Untitled"/>
-  <meta property="twitter:description" content="A new article created using the Distill format."/>
+  <meta property="twitter:title" content="Data Visualization: Year and Fatal Number in different Flight Phase "/>
+  <meta property="twitter:description" content="The data visualization represent the number of fatalities from 2008 to 2022 in different flight phase."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Untitled"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Nora Jones"]},{"type":"character","attributes":{},"value":["https://example.com/norajones"]},{"type":"character","attributes":{},"value":["Spacely Sprockets"]},{"type":"character","attributes":{},"value":["https://example.com/spacelysprokets"]}]}]},{"type":"character","attributes":{},"value":["2023-01-31"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Year and Fatal Number in different Flight Phase "]},{"type":"character","attributes":{},"value":["The data visualization represent the number of fatalities from 2008 to 2022 in different flight phase. \n"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2079,6 +2075,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+  <script src="site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+  <script src="site_libs/plotly-binding-4.10.1/plotly.js"></script>
+  <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+  <script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+  <link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+  <script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+  <link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+  <script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2098,7 +2102,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Untitled","description":"A new article created using the Distill format.","authors":[{"author":"Nora Jones","authorURL":"https://example.com/norajones","affiliation":"Spacely Sprockets","affiliationURL":"https://example.com/spacelysprokets","orcidID":""}],"publishedDate":"2023-01-31T00:00:00.000-08:00","citationText":"Jones, 2023"}
+{"title":"Year and Fatal Number in different Flight Phase ","description":"The data visualization represent the number of fatalities from 2008 to 2022 in different flight phase.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2117,8 +2121,8 @@ Data Visualizations
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="v1.html">Graph 1</a>
-<a href="v2.html">Graph 2</a>
+<a href="v1.html">Plotly Histogram</a>
+<a href="v2.html">Facet and Plotly Scatter</a>
 <a href="v3.html">Word Map</a>
 </div>
 </div>
@@ -2131,21 +2135,36 @@ Data Visualizations
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Untitled</h1>
+<h1>Year and Fatal Number in different Flight Phase</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A new article created using the Distill format.</p></p>
+<p><p>The data visualization represent the number of fatalities from 2008 to 2022 in different flight phase.</p></p>
 </div>
 
-<div class="d-byline">
-  Nora Jones <a href="https://example.com/norajones" class="uri">https://example.com/norajones</a> (Spacely Sprockets)<a href="https://example.com/spacelysprokets" class="uri">https://example.com/spacelysprokets</a>
-  
-<br/>2023-01-31
-</div>
 
 <div class="d-article">
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill for R Markdown at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Year Flight Phase and number of fatilities</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>FP</span> <span class='op'>&lt;-</span> <span class='va'>com</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>Year</span>, <span class='va'>FlightPhase</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>num_fatal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>Fatalities</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>FP</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>FlightPhase</span>, y <span class='op'>=</span> <span class='va'>num_fatal</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span> <span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>FlightPhase</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>Year</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="v2_files/figure-html5/unnamed-chunk-2-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>plot_ly</span><span class='op'>(</span><span class='va'>FP</span>, x <span class='op'>=</span> <span class='op'>~</span><span class='va'>Year</span>, y <span class='op'>=</span><span class='op'>~</span><span class='va'>num_fatal</span>, color <span class='op'>=</span><span class='op'>~</span><span class='va'>FlightPhase</span><span class='op'>)</span></span></code></pre>
+</div>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1d9ac6d24d9ce52bf682" style="width:624px;height:384px;"></div>
+<script type="application/json" data-for="htmlwidget-1d9ac6d24d9ce52bf682">{"x":{"visdat":{"ff774a52d2f2":["function () ","plotlyVisDat"]},"cur_data":"ff774a52d2f2","attrs":{"ff774a52d2f2":{"x":{},"y":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"num_fatal"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[2008,2010,2012,2014,2015,2016,2017,2018,2019,2020,2021],"y":[0,0,0,0,1,0,2,114,0,9,0],"type":"scatter","mode":"markers","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[131,228,362,246,317,139,0,0,67,47,21,0,111,32,14],"type":"scatter","mode":"markers","name":"Approach","marker":{"color":"rgba(228,156,113,1)","line":{"color":"rgba(228,156,113,1)"}},"textfont":{"color":"rgba(228,156,113,1)"},"error_y":{"color":"rgba(228,156,113,1)"},"error_x":{"color":"rgba(228,156,113,1)"},"line":{"color":"rgba(228,156,113,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[85,452,144,48,0,35,602,442,144,1,337,159,179,62,132],"type":"scatter","mode":"markers","name":"En route","marker":{"color":"rgba(201,152,157,1)","line":{"color":"rgba(201,152,157,1)"}},"textfont":{"color":"rgba(201,152,157,1)"},"error_y":{"color":"rgba(201,152,157,1)"},"error_x":{"color":"rgba(201,152,157,1)"},"line":{"color":"rgba(201,152,157,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0,1,1,2,43,0,1,5,0,7],"type":"scatter","mode":"markers","name":"Initial Climb","marker":{"color":"rgba(175,154,200,1)","line":{"color":"rgba(175,154,200,1)"}},"textfont":{"color":"rgba(175,154,200,1)"},"error_y":{"color":"rgba(175,154,200,1)"},"error_x":{"color":"rgba(175,154,200,1)"},"line":{"color":"rgba(175,154,200,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[57,40,162,93,12,13,48,0,1,0,52,44,24,0,0],"type":"scatter","mode":"markers","name":"Landing","marker":{"color":"rgba(226,148,184,1)","line":{"color":"rgba(226,148,184,1)"}},"textfont":{"color":"rgba(226,148,184,1)"},"error_y":{"color":"rgba(226,148,184,1)"},"error_x":{"color":"rgba(226,148,184,1)"},"line":{"color":"rgba(226,148,184,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2011,2012,2013,2016],"y":[0,0,0,0],"type":"scatter","mode":"markers","name":"Manoeuvring","marker":{"color":"rgba(176,208,99,1)","line":{"color":"rgba(176,208,99,1)"}},"textfont":{"color":"rgba(176,208,99,1)"},"error_y":{"color":"rgba(176,208,99,1)"},"error_x":{"color":"rgba(176,208,99,1)"},"line":{"color":"rgba(176,208,99,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0,0,0,3,1,0,0,0,0,0,0,0,0],"type":"scatter","mode":"markers","name":"Standing","marker":{"color":"rgba(227,217,62,1)","line":{"color":"rgba(227,217,62,1)"}},"textfont":{"color":"rgba(227,217,62,1)"},"error_y":{"color":"rgba(227,217,62,1)"},"error_x":{"color":"rgba(227,217,62,1)"},"line":{"color":"rgba(227,217,62,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022],"y":[289,20,112,17,59,0,38,2,0,4,112,38,8,0,0],"type":"scatter","mode":"markers","name":"Take-off","marker":{"color":"rgba(245,207,100,1)","line":{"color":"rgba(245,207,100,1)"}},"textfont":{"color":"rgba(245,207,100,1)"},"error_y":{"color":"rgba(245,207,100,1)"},"error_x":{"color":"rgba(245,207,100,1)"},"line":{"color":"rgba(245,207,100,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021],"y":[0,1,0,0,0,0,0,0,0,0,0,0,0,0],"type":"scatter","mode":"markers","name":"Taxi","marker":{"color":"rgba(219,192,155,1)","line":{"color":"rgba(219,192,155,1)"}},"textfont":{"color":"rgba(219,192,155,1)"},"error_y":{"color":"rgba(219,192,155,1)"},"error_x":{"color":"rgba(219,192,155,1)"},"line":{"color":"rgba(219,192,155,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2008,2009,2010,2011,2012,2013,2014],"y":[0,17,27,23,0,0,239],"type":"scatter","mode":"markers","name":"Unknown","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"textfont":{"color":"rgba(179,179,179,1)"},"error_y":{"color":"rgba(179,179,179,1)"},"error_x":{"color":"rgba(179,179,179,1)"},"line":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p>This plot represents the number of fatalities (from 2008 - 2022) each year from across different flight phase (i.e., from Approach to Landing). The x axis represents the year from 2008 to 2022, and the y axis represents the number of fatal number. The groups of flight phase are represented by the colors on the scatter plot. (I am going to make a change for the graph) In the interactive graph, readers can click on the point to see the actual number for each year. They can also click on the legend to filter the flight phase based on their interets. From this plot, we can easily distinguish that in 2014, flights cause more accidents during the flight. The flight phase causes the most fatal is En-Route.</p>
+<p>This plot is intended for a general audience. See the plots on the below for different iterations of this visualization.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
