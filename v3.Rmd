@@ -25,7 +25,10 @@ world <- read.csv("data/world.csv") %>%
 df <- left_join(df, world)
 com <- filter(df, df$ScheduledCommercial == "True") %>% select(Year, Country, Model, Fatalities, Over2250, Over5700, InjuryLevel, Risk, FlightPhase, EngineType)
 
-country <- data.frame(table(com$Country)) %>% rename(Cases = Freq)
+country <- data.frame(table(com$Country)) %>% rename(Country = Var1, Cases = Freq)
+country$Country <- as.character(country$Country)
+country$Country[country$Country == "United States"] <- "USA"
+country$Country <- as.factor(country$Country)
 
 ```
 
@@ -34,7 +37,7 @@ library(ggplot2)
 library(maps)
 library(dplyr)
 
-world_map <- map_data("world") %>% left_join(country, by = c("region" = "Var1"))
+world_map <- map_data("world") %>% left_join(country, by = c("region" = "Country"))
 ggplot(world_map, aes(x = long, y = lat, group = group, fill = Cases)) +
   geom_polygon(color = "white") +
   scale_fill_gradient(low = "white", high = "red") +
