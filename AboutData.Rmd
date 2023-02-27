@@ -77,6 +77,7 @@ coun<- com %>% group_by(Country, na.rm = T) %>% mutate(num_fatal = sum(Fatalitie
 ```
 
 Add up the fatality number for each year for each country
+
 ```{r echo=TRUE, eval=TRUE}
 FP <- com %>% group_by(FlightPhase, na.rm = T) %>% mutate(num_fatal = sum(Fatalities, na.rm = T))
 ```
