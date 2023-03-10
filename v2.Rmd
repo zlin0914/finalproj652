@@ -42,8 +42,8 @@ plot <- ggplot(FP, aes(x = Year, y = num_fatal)) +
   geom_col(aes (fill = num_fatal)) + 
   facet_wrap(~FlightPhase) + 
   labs(title = "Trend in fatalities across years in each Risk Phase", 
-       y = "Year", 
-       x = "Number of Fatality") +
+       y = "Number of Fatality", 
+       x = "Year") +
   scale_fill_gradient(low = "#ADD8E6", high = "#000080")+
   labs(fill = "Fatalities")+
   theme_minimal()
