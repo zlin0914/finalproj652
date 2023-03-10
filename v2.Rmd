@@ -46,7 +46,7 @@ plot <- ggplot(FP, aes(x = Year, y = num_fatal)) +
        x = "Number of Fatality") +
   scale_fill_gradient(low = "#ADD8E6", high = "#000080")+
   labs(fill = "Fatalities")+
-   theme_minimal()
+  theme_minimal()
   
 ```
 
