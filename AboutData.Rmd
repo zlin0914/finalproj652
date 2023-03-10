@@ -16,32 +16,42 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ## Variables 
-Columns:
 
-- Date: Date of occurrence in datetime format (time is default 00:00:00.000Z) 
-- StateOfOccurrence: Country of occurrence 
-- Location: City or nearest city of occurrence
-- Model: Aircraft type
-- Registration: Aircraft registration code 
-- Operator: Name of Operator (airline, institution or responsible for the aircraft operation) 
-- StateOfOperator: Operator's country
-- StateOfRegistry: Country of aircraft registration 
-- FlightPhase: Flight Phase of occurrence (take off, landing, approach, etc.)
-- Class: Accident (unique value). rmk: only 'Accident' class was selected in this dataset (no incidens)
-- Fatalities: Number of fatal victims
-- Over2250: If aircraft basic operational weight (empty) is greater than 2250KG
-- Over5700: If aircraft basic operational weight (empty) is greater than 5700KG
-- ScheduledCommercial: If it was a scheduled commercial flight (airlines mostly)
-- InjuryLevel: Level of injuries on person/people involved in the occurrence
-- TypeDesignator: Aircraft type code (https://cfapps.icao.int/doc8643/reports/Part2-By%20Type%20Designator(Decode).pdf)
-- Helicopter: if it was a helicopter
-- Airplane: If it was an airplane
-- Engine: Number of engines in the aircraft
-- EngineType: Aircraft engine type (jet, turboprop or piston)
-- Official: If ICAO was designated to participate in the accident investigation
-- OccCats: All risk types involved in the occurrence, coded according to HRCs ( High Risks Categories codes) - ICAO
-- Risk: Main risk type involved in the occurrence, coded according to HRCs(( High Risks Categories codes) - ICAO
-- Year: Year of occurrence
+```{r echo= FALSE, eval=TRUE}
+Variables <- c("Date", "StateOfOccurrence","Location" ,"Model","Registration", "Operator","StateOfOperator","StateOfRegistry", "FlightPhase","Class","Fatalities","Over2250","Over5700","ScheduledCommercial","InjuryLevel","TypeDesignator","Helicopter","Airplane","Engine","EngineType","Official","OccCats","Risk","Year")
+
+Explanations <-c("Date of occurrence in datetime format (time is default 00:00:00.000Z)",
+            "Country of occurrence ",
+            "City or nearest city of occurrence",
+            "Aircraft type",
+            "Aircraft registration code",
+            "Name of Operator (airline, institution or responsible for the aircraft operation)",
+            "Operator's country",
+            "Country of aircraft registration ",
+            "Flight Phase of occurrence (take off, landing, approach, etc.)",
+            "Accident (unique value). rmk: only 'Accident' class was selected in this dataset (no incidens)",
+            "Number of fatal victims",
+            "If aircraft basic operational weight (empty) is greater than 2250KG",
+            "If aircraft basic operational weight (empty) is greater than 5700KG",
+            "If it was a scheduled commercial flight (airlines mostly)",
+            "Level of injuries on person/people involved in the occurrence",
+            "Aircraft type code (https://cfapps.icao.int/doc8643/reports/Part2-By%20Type%20Designator(Decode).pdf)",
+            "if it was a helicopter",
+            "If it was an airplane",
+            "Number of engines in the aircraft",
+            "Aircraft engine type (jet, turboprop or piston)",
+            "If ICAO was designated to participate in the accident investigation",
+            "All risk types involved in the occurrence, coded according to HRCs ( High Risks Categories codes) - ICAO",
+            "Main risk type involved in the occurrence, coded according to HRCs(( High Risks Categories codes) - ICAO",
+            "Year of occurrence")
+
+table <- data.frame(Variables = Variables, Explanations = Explanations)
+
+knitr::kable(table)
+```
+
+
+
 
 ## Data Preparation
 Here are the packages I used for this data visualization:

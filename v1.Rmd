@@ -10,7 +10,7 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r importdata}
+```{r importdata, echo=FALSE, eval=TRUE}
 library(tidyverse)
 library(ggthemes)
 library(plotly)
@@ -27,7 +27,7 @@ com <- filter(df, df$ScheduledCommercial == "True") %>% select(Year, Country, Mo
 
 ```
 
-```{r echo=TRUE, eval=TRUE}
+```{r echo=FALSE, eval=TRUE}
 Ri_acc <- data.frame(table(com$Risk, com$Year)) %>% rename(Risk = Var1, Year = Var2)
 sum <- aggregate(Freq ~ Risk, data = Ri_acc, FUN = "sum")
 #Filter out if average each year less than 1 event 
@@ -45,16 +45,16 @@ Ri_acc$Risk <- ifelse(Ri_acc$Risk == "SCF", "System/Component Failture or Malfun
                                                               ifelse(Ri_acc$Risk == "TURB", "Turbulence Encounter",
                                          Ri_acc$Risk))))))))
 
+fig <- plot_ly(data =Ri_acc, x = ~Year, y = ~Freq, color = ~Risk, size = ~Freq, type = "scatter", mode = "lines") %>%  
+#  layout(legend = list(y = -2, 
+#                       x = 1, 
+#                       orientation = "v")) %>%
+  layout(title = "Risk Factors and Frequency Across 2008-2022", 
+         yaxis = list (title = "Frequency"))
+
 ```
 
-```{r eval = TRUE, echo = TRUE}
-fig <- plot_ly(data =Ri_acc, x = ~Year, y = ~Freq, color = ~Risk, size = ~Freq, type = "bar") %>%  
-  layout(legend = list(y = -0.5, 
-                       x = -0.1, 
-                       orientation = "h")) %>%
-  layout(title = "Risk Factors and Frequency Across 2008-2022")
-
-
+```{r, layout="l-page", echo = TRUE}
 fig
 ```
 

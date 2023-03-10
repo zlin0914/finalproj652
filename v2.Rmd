@@ -9,7 +9,7 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r eval = T, echo = T}
+```{r eval = T, echo = F}
 library(tidyverse)
 library(ggthemes)
 library(plotly)
@@ -26,38 +26,39 @@ com <- filter(df, df$ScheduledCommercial == "True") %>% select(Year, Country, Mo
 
 ```
 
-Year Flight Phase and number of fatilities
-
-```{r eval = T, echo = T}
+```{r eval = T, echo = F}
 FP <- com %>% group_by(Year, FlightPhase, na.rm = T) %>% summarize(num_fatal = sum(Fatalities, na.rm = T))
 
 FP <- FP %>% filter(FlightPhase != "" & FlightPhase != "Unknown" & FlightPhase != "Taxi" & FlightPhase != "Standing" & FlightPhase != "Manoeuvring")
 ```
 
 
-```{r eval = T, echo = T}
+```{r eval = T, echo = F}
 level_order <- c("Take-off", "Initial Climb", "En route", "Approach", "Landing" )
 
 FP$FlightPhase <- factor(FP$FlightPhase, level = level_order)
 
- ggplot(FP, aes(x = FlightPhase, y = num_fatal)) +  
-  geom_col(aes (fill = FlightPhase)) + 
-  facet_wrap(~Year) + 
-  coord_flip() +
-  labs(title = "Flight Phase and Fatalities", 
-       y = "Number of Fatality", 
-       x = "Flight Phase") +
-   scale_fill_manual(values = c("#050F2C", "#1F2C56", "#2A4494", "#3C6EB4", "#5395E5"))+
+plot <- ggplot(FP, aes(x = Year, y = num_fatal)) +  
+  geom_col(aes (fill = num_fatal)) + 
+  facet_wrap(~FlightPhase) + 
+  labs(title = "Trend in fatalities across years in each Risk Phase", 
+       y = "Year", 
+       x = "Number of Fatality") +
+  scale_fill_gradient(low = "#ADD8E6", high = "#000080")+
+  labs(fill = "Fatalities")+
    theme_minimal()
   
 ```
 
+```{r , layout="l-page", eval = T, echo = T}
+plot
+```
 
 <p align="center">
   <img src="images/flightphase.png" alt="light Phase Description" width="100"  style="display:block; margin:auto;">
 </p>
 
-This plot represents the number of fatalities (from 2008 - 2022) each year from across different flight phase (i.e., from Approach to Landing). The x axis represents the year from 2008 to 2022, and the y axis represents the number of fatal number. The groups of flight phase are represented by the colors on the scatter plot. (I am going to make a change for the graph) In the interactive graph, readers can click on the point to see the actual number for each year. They can also click on the legend to filter the flight phase based on their interets. From this plot, we can easily distinguish that in 2014, flights cause more fatal number during the flight. The flight phase causes the most fatal is En-Route. 
+This plot represents the number of fatalities (from 2008 - 2022) each year from across different flight phase (i.e., from Approach to Landing). The x axis represents the year from 2008 to 2022, and the y axis represents the number of fatal number. The group of flight phase are represented on the facet. From this plot, we can easily distinguish that in 2014, flights cause more fatal number during the flight. The flight phase causes the most fatal is En-Route. 
 
 This plot is intended for a general audience. See the plots on the below for different iterations of this visualization.
 

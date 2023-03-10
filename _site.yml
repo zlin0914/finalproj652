@@ -1,7 +1,7 @@
 name: "."
-title: "Data Visualization"
+title: "Home"
 description: |
-  Data Visualization
+  Research Interest
 output_dir: "docs"
 navbar:
   right:
@@ -13,6 +13,6 @@ navbar:
           href: v1.html
         - text: "Facet and Plotly Scatter"
           href: v2.html
-        - text: "Word Map"
+        - text: "World Map"
           href: v3.html
 output: distill::distill_article

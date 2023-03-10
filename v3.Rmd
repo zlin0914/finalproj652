@@ -1,5 +1,5 @@
 ---
-title: "Word Map"
+title: "World Map"
 description: |
   2008-2012 Numbers of Flight Accidents in the world
 output: distill::distill_article
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-```{r eval = T, echo = T}
+```{r eval = T, echo = F}
 
 library(tidyverse)
 library(ggthemes)
@@ -23,7 +23,8 @@ world <- read.csv("data/world.csv") %>%
     rename(StateOfOccurrence = Abbreviation)
 
 df <- left_join(df, world)
-com <- filter(df, df$ScheduledCommercial == "True") %>% select(Year, Country, Model, Fatalities, Over2250, Over5700, InjuryLevel, Risk, FlightPhase, EngineType)
+com <- filter(df, df$ScheduledCommercial == "True" & df$Fatalities >0) %>% select(Year, Country, Model, Fatalities, Over2250, Over5700, InjuryLevel, Risk, FlightPhase, EngineType)
+
 
 country <- data.frame(table(com$Country)) %>% rename(Country = Var1, Cases = Freq)
 country$Country <- as.character(country$Country)
@@ -32,19 +33,23 @@ country$Country <- as.factor(country$Country)
 
 ```
 
-```{r echo=TRUE, eval=TRUE}
+```{r echo=FALSE, eval=TRUE}
 library(ggplot2)
 library(maps)
 library(dplyr)
 
 world_map <- map_data("world") %>% left_join(country, by = c("region" = "Country"))
-ggplot(world_map, aes(x = long, y = lat, group = group, fill = Cases)) +
+worldmap <- ggplot(world_map, aes(x = long, y = lat, group = group, fill = Cases)) +
   geom_polygon(color = "white") +
   scale_fill_gradient(low = "white", high = "red") +
-  labs(title = "Accidents by Country") +
+  labs(title = "Number of Accidents by Country with Fatal") +
   theme_void()
 ```
-This plot represents the number of flight accidents cases (from 2008 - 2022) across the world for each country in the dataset. The number of the flight accidents is represented by the color fill in the worldmap. The color closer to red means more cases occurred. From this plot, we can easily distinguish that United States had the highest number of cases from 2008 to 2022. Additionally, more flight accidents occurred in China and Russia compared to the other countries during the time frame. 
+```{r layout="l-page",echo=TRUE, eval=TRUE}
+worldmap 
+```
+
+This plot represents the number of flight accidents cases (from 2008 - 2022) across the world for each country in the dataset, only with fatalities. The number of the flight accidents is represented by the color fill in the worldmap. The color closer to red means more cases occurred. From this plot, we can easily distinguish that United States had the highest number of cases from 2008 to 2022. Additionally, more flight accidents occurred in China and Russia compared to the other countries during the time frame. 
 
 This plot is intended for a general audience. See the plots on the below for different iterations of this visualization.
 

@@ -88,20 +88,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Data Visualization: About the data</title>
+  <title>Home: About the data</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Data Visualization: About the data"/>
+  <meta property="og:title" content="Home: About the data"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Data Visualization"/>
+  <meta property="og:site_name" content="Home"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Data Visualization: About the data"/>
+  <meta property="twitter:title" content="Home: About the data"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
@@ -2099,7 +2099,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="index.html" class="title">Data Visualization</a>
+<a href="index.html" class="title">Home</a>
 </div>
 <div class="nav-right">
 <a href="AboutData.html">About Data</a>
@@ -2133,33 +2133,118 @@ Data Visualizations
 
 <div class="d-article">
 <h2 id="variables">Variables</h2>
-<p>Columns:</p>
-<ul>
-<li>Date: Date of occurrence in datetime format (time is default 00:00:00.000Z)</li>
-<li>StateOfOccurrence: Country of occurrence</li>
-<li>Location: City or nearest city of occurrence</li>
-<li>Model: Aircraft type</li>
-<li>Registration: Aircraft registration code</li>
-<li>Operator: Name of Operator (airline, institution or responsible for the aircraft operation)</li>
-<li>StateOfOperator: Operator’s country</li>
-<li>StateOfRegistry: Country of aircraft registration</li>
-<li>FlightPhase: Flight Phase of occurrence (take off, landing, approach, etc.)</li>
-<li>Class: Accident (unique value). rmk: only ‘Accident’ class was selected in this dataset (no incidens)</li>
-<li>Fatalities: Number of fatal victims</li>
-<li>Over2250: If aircraft basic operational weight (empty) is greater than 2250KG</li>
-<li>Over5700: If aircraft basic operational weight (empty) is greater than 5700KG</li>
-<li>ScheduledCommercial: If it was a scheduled commercial flight (airlines mostly)</li>
-<li>InjuryLevel: Level of injuries on person/people involved in the occurrence</li>
-<li>TypeDesignator: Aircraft type code (<a href="https://cfapps.icao.int/doc8643/reports/Part2-By%20Type%20Designator(Decode).pdf" class="uri">https://cfapps.icao.int/doc8643/reports/Part2-By%20Type%20Designator(Decode).pdf</a>)</li>
-<li>Helicopter: if it was a helicopter</li>
-<li>Airplane: If it was an airplane</li>
-<li>Engine: Number of engines in the aircraft</li>
-<li>EngineType: Aircraft engine type (jet, turboprop or piston)</li>
-<li>Official: If ICAO was designated to participate in the accident investigation</li>
-<li>OccCats: All risk types involved in the occurrence, coded according to HRCs ( High Risks Categories codes) - ICAO</li>
-<li>Risk: Main risk type involved in the occurrence, coded according to HRCs(( High Risks Categories codes) - ICAO</li>
-<li>Year: Year of occurrence</li>
-</ul>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variables</th>
+<th style="text-align: left;">Explanations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;">Date of occurrence in datetime format (time is default 00:00:00.000Z)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">StateOfOccurrence</td>
+<td style="text-align: left;">Country of occurrence</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Location</td>
+<td style="text-align: left;">City or nearest city of occurrence</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Model</td>
+<td style="text-align: left;">Aircraft type</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Registration</td>
+<td style="text-align: left;">Aircraft registration code</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Operator</td>
+<td style="text-align: left;">Name of Operator (airline, institution or responsible for the aircraft operation)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">StateOfOperator</td>
+<td style="text-align: left;">Operator’s country</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">StateOfRegistry</td>
+<td style="text-align: left;">Country of aircraft registration</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FlightPhase</td>
+<td style="text-align: left;">Flight Phase of occurrence (take off, landing, approach, etc.)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Class</td>
+<td style="text-align: left;">Accident (unique value). rmk: only ‘Accident’ class was selected in this dataset (no incidens)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fatalities</td>
+<td style="text-align: left;">Number of fatal victims</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Over2250</td>
+<td style="text-align: left;">If aircraft basic operational weight (empty) is greater than 2250KG</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Over5700</td>
+<td style="text-align: left;">If aircraft basic operational weight (empty) is greater than 5700KG</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ScheduledCommercial</td>
+<td style="text-align: left;">If it was a scheduled commercial flight (airlines mostly)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">InjuryLevel</td>
+<td style="text-align: left;">Level of injuries on person/people involved in the occurrence</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TypeDesignator</td>
+<td style="text-align: left;">Aircraft type code (<a href="https://cfapps.icao.int/doc8643/reports/Part2-By%20Type%20Designator(Decode).pdf" class="uri">https://cfapps.icao.int/doc8643/reports/Part2-By%20Type%20Designator(Decode).pdf</a>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Helicopter</td>
+<td style="text-align: left;">if it was a helicopter</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Airplane</td>
+<td style="text-align: left;">If it was an airplane</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Engine</td>
+<td style="text-align: left;">Number of engines in the aircraft</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EngineType</td>
+<td style="text-align: left;">Aircraft engine type (jet, turboprop or piston)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Official</td>
+<td style="text-align: left;">If ICAO was designated to participate in the accident investigation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OccCats</td>
+<td style="text-align: left;">All risk types involved in the occurrence, coded according to HRCs ( High Risks Categories codes) - ICAO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Risk</td>
+<td style="text-align: left;">Main risk type involved in the occurrence, coded according to HRCs(( High Risks Categories codes) - ICAO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Year</td>
+<td style="text-align: left;">Year of occurrence</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="data-preparation">Data Preparation</h2>
 <p>Here are the packages I used for this data visualization:</p>
 <div class="layout-chunk" data-layout="l-body">
