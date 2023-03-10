@@ -11,7 +11,7 @@ navbar:
       menu: 
         - text: "Plotly Histogram"
           href: v1.html
-        - text: "Facet and Plotly Scatter"
+        - text: "Facet"
           href: v2.html
         - text: "World Map"
           href: v3.html
