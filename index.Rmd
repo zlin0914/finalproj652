@@ -14,10 +14,10 @@ site: distill::distill_website
 ---
 
 ## Reason of the interest
-On 2022 March, there are a flight accident in China occurred on the route to my city, Guangzhou. The whole country were in sadness because of the flight tragedy. As human beings, we can easily imagine that the love ones of those travelers who were waiting at the destination city were heart-broken. Therefore, I want to analyze the data to visualize what factors lead to  flight accidents based on the public data, what dangerous factors we can avoid to get a safer trip. Therefore, I intentionally selected the recent 15 years (2008-2022) flight accident data  to illustrate.
+On 2022 March, there are a flight accident in China occurred on the route to my city, Guangzhou. The whole country were in sadness because of the flight tragedy. As human beings, we can easily imagine that the love ones of those travelers who were waiting at the destination city were heart-broken. Therefore, I want to analyze the data to visualize what factors lead to flight accidents based on the public data, what dangerous factors we can avoid to get a safer trip. Therefore, I intentionally selected the recent 15 years (2008-2022) flight accident data to illustrate.
 
 ## About the Data Source
-For this project, I used data from [Kaggle](https://www.kaggle.com/) by searchign term "flight accidents." You can download the complete dataset [here](https://www.kaggle.com/datasets/marcelotanis/air-accidents-from-jan2008-to-may2022-icao), which contains 6109 flight accidents information in recent 15 years. The dataset include 26 variables, e.g., location, year, number of fatality, flight operator, injury level etc..
+For this project, I used data from [Kaggle](https://www.kaggle.com/) by searching term "flight accidents." You can download the complete dataset [here](https://www.kaggle.com/datasets/marcelotanis/air-accidents-from-jan2008-to-may2022-icao), which contains 6109 flight accidents information in recent 15 years. The dataset include 26 variables, e.g., location, year, number of fatality, flight operator, injury level etc..
 The original data is extracted from from ICAO (International Civil Aviation Organization) API, occurred in the last 15 years (from Jan 2008 to May 2022). Original ICAO API datasets link is available [here](https://applications.icao.int/dataservices/default.aspx). API key required, with 100 free calls available using a company email for subscription. 
 
 ## Audience
