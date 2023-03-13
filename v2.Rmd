@@ -60,6 +60,8 @@ plot <- ggplot(FP, aes(x = Year, y = num_fatal)) +
   
 ```
 
+**Final Version**
+
 ```{r , layout="l-page", eval = T, echo = F}
 plot
 ```
