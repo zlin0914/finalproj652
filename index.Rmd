@@ -6,6 +6,8 @@ links:
     url: "mailto:zhenl@uoregon.edu"
   - label: '<i class="fab fa-linkedin"></i> Linkedin'
     url: 'https://www.linkedin.com/in/zhen-lin-76219a146/ target="_blank"'
+  - label: '<i class="fab fa-github"></i> Github'
+    url: "https://github.com/zlin0914/finalproj652"
 output:
   postcards::trestles
 site: distill::distill_website
