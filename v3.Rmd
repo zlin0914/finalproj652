@@ -50,7 +50,7 @@ worldmap <- ggplot(world_map, aes(x = long, y = lat, group = group, fill = Cases
 worldmap 
 ```
 
-This plot represents the number of flight accidents cases (from 2008 - 2022) across the world for each country in the dataset, only with fatalities. The number of the flight accidents is represented by the color fill in the worldmap. The color closer to red means more cases occurred. From this plot, we can easily distinguish that United States had the highest number of cases from 2008 to 2022. Additionally, more flight accidents occurred in China and Russia compared to the other countries during the time frame. 
+This plot represents the number of flight accidents cases (from 2008 - 2022) across the world for each country in the dataset, only with fatalities. The number of the flight accidents is represented by the color fill in the worldmap. The color closer to red means more cases occurred. From this plot, we can easily distinguish that Russia had the highest number of cases with death from 2008 to 2022. 
 
 This plot is intended for a general audience. See the plots on the below for different iterations of this visualization.
 
