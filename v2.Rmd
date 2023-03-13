@@ -32,6 +32,15 @@ FP <- com %>% group_by(Year, FlightPhase, na.rm = T) %>% summarize(num_fatal = s
 FP <- FP %>% filter(FlightPhase != "" & FlightPhase != "Unknown" & FlightPhase != "Taxi" & FlightPhase != "Standing" & FlightPhase != "Manoeuvring")
 ```
 
+**Old Version**
+
+<p align="center">
+  <img src="images/v2_old1.png" alt="light Phase Description" width="100"  style="display:block; margin:auto;">
+</p>
+
+<p align="center">
+  <img src="images/v2_old.png" alt="light Phase Description" width="100"  style="display:block; margin:auto;">
+</p>
 
 ```{r eval = T, echo = F}
 level_order <- c("Take-off", "Initial Climb", "En route", "Approach", "Landing" )
@@ -51,7 +60,7 @@ plot <- ggplot(FP, aes(x = Year, y = num_fatal)) +
   
 ```
 
-```{r , layout="l-page", eval = T, echo = T}
+```{r , layout="l-page", eval = T, echo = F}
 plot
 ```
 

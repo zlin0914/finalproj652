@@ -27,6 +27,25 @@ com <- filter(df, df$ScheduledCommercial == "True") %>% select(Year, Country, Mo
 
 ```
 
+**Old Version**
+
+```{r echo=FALSE, eval=TRUE}
+Ri_acc <- data.frame(table(com$Risk, com$Year)) %>% rename(Risk = Var1, Year = Var2)
+sum <- aggregate(Freq ~ Risk, data = Ri_acc, FUN = "sum")
+#Filter out if average each year less than 1 event 
+filtered <- sum[sum$Freq >= 15, ]
+Ri_acc <- Ri_acc[(Ri_acc$Risk %in% c("CABIN", "CFIT", "F-NI","LOC-I","RS","SCF","TURB")), ]
+
+plot_ly(data =Ri_acc, x = ~Year, y = ~Freq, color = ~Risk, size = ~Freq) 
+fig <- plot_ly(data =Ri_acc, x = ~Year, y = ~Freq, color = ~Risk, size = ~Freq, type = "bar") %>%  
+  layout(legend = list(y = -0.5, 
+                       x = -0.1, 
+                       orientation = "h")) %>%
+  layout(title = "Risk Factors and Frequency Across 2008-2022")
+
+fig
+```
+
 ```{r echo=FALSE, eval=TRUE}
 Ri_acc <- data.frame(table(com$Risk, com$Year)) %>% rename(Risk = Var1, Year = Var2)
 sum <- aggregate(Freq ~ Risk, data = Ri_acc, FUN = "sum")
@@ -58,7 +77,9 @@ fig <- plot_ly(data =Ri_acc, x = ~Year, y = ~Freq, color = ~Risk, size = ~Freq, 
 
 ```
 
-```{r, layout="l-page", echo = TRUE}
+**Final Version**
+
+```{r, layout="l-page", echo = FALSE, eval =TRUE}
 fig
   
 ```

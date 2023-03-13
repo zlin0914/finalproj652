@@ -33,6 +33,17 @@ country$Country <- as.factor(country$Country)
 
 ```
 
+**Old Version**
+
+<p align="center">
+  <img src="images/v3_old.png" alt="light Phase Description" width="100"  style="display:block; margin:auto;">
+</p>
+
+<p align="center">
+  <img src="images/v3_old1.png" alt="light Phase Description" width="100"  style="display:block; margin:auto;">
+</p>
+
+
 ```{r echo=FALSE, eval=TRUE}
 library(ggplot2)
 library(maps)
@@ -46,7 +57,10 @@ worldmap <- ggplot(world_map, aes(x = long, y = lat, group = group, fill = Cases
     subtitle = "Number of Accidents by Country with Fatal") +
   theme_void()
 ```
-```{r layout="l-page",echo=TRUE, eval=TRUE}
+
+**Final Version**
+
+```{r layout="l-page",echo=FALSE, eval=TRUE}
 worldmap 
 ```
 
