@@ -42,7 +42,8 @@ world_map <- map_data("world") %>% left_join(country, by = c("region" = "Country
 worldmap <- ggplot(world_map, aes(x = long, y = lat, group = group, fill = Cases)) +
   geom_polygon(color = "white") +
   scale_fill_gradient(low = "white", high = "red") +
-  labs(title = "Number of Accidents by Country with Fatal") +
+  labs(title = "How many people die in the world because of flight accident?",
+    subtitle = "Number of Accidents by Country with Fatal") +
   theme_void()
 ```
 ```{r layout="l-page",echo=TRUE, eval=TRUE}

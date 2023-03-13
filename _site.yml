@@ -9,7 +9,7 @@ navbar:
       href: AboutData.html
     - text: "Data Visualizations"
       menu: 
-        - text: "Plotly Histogram"
+        - text: "Plotly Line Plot"
           href: v1.html
         - text: "Facet"
           href: v2.html
