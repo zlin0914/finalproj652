@@ -20,7 +20,7 @@
       "description": "The data visualization represent the number of accidents from 2008 to 2022 and represents the risk factor of the accidents. \n",
       "author": [],
       "contents": "\n\n\n\n\n\n\n\n\nfig\n\n\n\nPlease see the abbreviation in the Risk Factor Hand Book\nThis plot represents the number of accidents (from 2008 - 2022) each year and the risk factor of the accidents based on the result of aviation occurrence investigation.The x axis represents the year from 2008 to 2022, and the y axis represents the number of accidents. The risk factors are represented by the colors on the line plot. In the interactive graph, readers can click on to see the actual accidents number for the year. From this plot, we can easily distinguish that most of accidents occurred because of “Runway Safety”, and there are most accidents happened in 2014. And we can see the accidents are lower by years.\nThis plot is intended for a general audience. See the plots on the below for different iterations of this visualization.\n\n\n\n",
-      "last_modified": "2023-03-13T14:21:33-07:00"
+      "last_modified": "2023-03-13T15:46:16-07:00"
     },
     {
       "path": "v2.html",

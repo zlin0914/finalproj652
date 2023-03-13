@@ -41,7 +41,7 @@ FP$FlightPhase <- factor(FP$FlightPhase, level = level_order)
 plot <- ggplot(FP, aes(x = Year, y = num_fatal)) +  
   geom_col(aes (fill = num_fatal)) + 
   facet_wrap(~FlightPhase) + 
-  labs(title = "When the flight risk happen the most?",
+  labs(title = "When the flight risk happen the most? Why you need to put on seat bell during flight?",
     subtitle = "Trend in fatalities across years in each Risk Phase", 
        y = "Number of Fatality", 
        x = "Year") +

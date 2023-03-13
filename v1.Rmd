@@ -45,24 +45,22 @@ Ri_acc$Risk <- ifelse(Ri_acc$Risk == "SCF", "System/Component Failture or Malfun
                                                               ifelse(Ri_acc$Risk == "TURB", "Turbulence Encounter",
                                          Ri_acc$Risk))))))))
 
-t <- list(
-  family = "sans serif",
-  size = 14,
-  color = 'darkblue')
+t <- list(size = 14)
 
-fig <- plot_ly(data =Ri_acc, x = ~Year, y = ~Freq, color = ~Risk, size = ~Freq, type = "scatter", mode = "lines") %>%  
-#  layout(legend = list(y = -2, 
-#                       x = 1, 
-#                       orientation = "v")) %>%
+
+fig <- plot_ly(data =Ri_acc, x = ~Year, y = ~Freq, color = ~Risk, size = ~Freq, type = "scatter", mode = "lines", colors = "Set1" ) %>%  
   layout(title = "What are the risk factors cause the flight accidents? 
-         Risk Factors and Frequency Across 2008-2022", 
+         Click on legend to check each risk factor", 
          yaxis = list (title = "Frequency"),
-         font = t)
+         font = t,
+         legend = list(y = -0.1, x = 1.05))
+   
 
 ```
 
 ```{r, layout="l-page", echo = TRUE}
 fig
+  
 ```
 
 Please see the abbreviation in the [Risk Factor Hand Book](https://www.icao.int/APAC/Meetings/2012_APRAST/OccurrenceCategoryDefinitions.pdf)
